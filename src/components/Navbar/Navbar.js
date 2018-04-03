@@ -31,10 +31,10 @@ class Navbar extends Component {
         <Responsive as={Menu.Item} maxWidth={Responsive.onlyTablet.minWidth}>
           <Dropdown text="☰">
           <Dropdown.Menu style={{ left: 'auto', right: 0 }}>
-            <Dropdown.Item direction='right'>List a spot</Dropdown.Item>
-            <Dropdown.Item>Find a spot</Dropdown.Item>
-            <Dropdown.Item>Sign up</Dropdown.Item>
-            <Dropdown.Item>Log in</Dropdown.Item>
+            <Dropdown.Item as={Link} to='/list'>List a spot</Dropdown.Item>
+            <Dropdown.Item as={Link} to='/spots'>Find a spot</Dropdown.Item>
+            <Dropdown.Item as={Link} to='/signup' >Sign up</Dropdown.Item>
+            <Dropdown.Item as={Link} to='/login' >Log in</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         </Responsive>
