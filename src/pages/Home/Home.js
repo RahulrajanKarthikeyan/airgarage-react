@@ -6,7 +6,7 @@ class Home extends Component {
         return (
             <div>
             <Navbar />
-                <h1>AirGarage homepage design</h1>
+            <h1>AirGarage homepage design</h1>
             <Footer />
             </div>
         )
