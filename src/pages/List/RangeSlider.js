@@ -6,8 +6,7 @@ class RangeSlider extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      horizontal: 10,
-      vertical: 50
+      horizontal: 10
     }
   }
 
@@ -17,14 +16,8 @@ class RangeSlider extends Component {
     })
   };
 
-  handleChangeVertical = value => {
-    this.setState({
-      vertical: value
-    })
-  };
-
   render () {
-    const { horizontal, vertical } = this.state
+    const { horizontal } = this.state
     const horizontalLabels = {
       0: 'Low',
       50: 'Medium',
