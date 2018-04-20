@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Checkbox, Dropdown, Form } from 'semantic-ui-react'
 import { options } from './options'
-import 'semantic-ui-css/semantic.min.css';
 
 const signup = () => (
             <Form>
