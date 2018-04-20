@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Responsive, Button, Menu, Input, Dropdown, Radio, Form, Transition, Icon, Popup } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.css';
+import './semantic.css';
 import RangeSlider from './RangeSlider';
 
 class ListForm extends Component {
