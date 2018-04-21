@@ -1,24 +1,60 @@
 import React, { Component } from 'react';
 import { Responsive, Button, Menu, Input, Dropdown, Radio, Form, Transition, Icon, Popup } from 'semantic-ui-react'
-import './semantic.css';
+import './Override.css';
 import RangeSlider from './RangeSlider';
 
 class ListForm extends Component {
 
+    state = {   
+        animation: 'fade down', 
+        duration: 500, 
+        availabilityVisible: true,
+        companyVisible: false,
 
-    state = {   animation: 'fade down', 
-                duration: 500, 
-                availabilityVisible: true,
-                companyVisible: false }
+        name: '',
+        classification: '',
+        addressLine1: '',
+        addressLine2: '',
+        price: '',
+        available_24_7: false,
+        auto_book: false,
+        notes: '',
+        restrictions: '',
+        quantity: '',
+        photo_url: '',
+        company: false
+    }
 
     handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-    handleAvailability = () => this.setState({ availabilityVisible: !this.state.availabilityVisible })
-    handleCompany = () => this.setState({ companyVisible: !this.state.companyVisible })
+    handleAvailability = () => this.setState({ availabilityVisible: !this.state.availabilityVisible, available_24_7: this.state.availabilityVisible })
+    
+    handleCompany = () => this.setState({ companyVisible: !this.state.companyVisible, company: !this.state.companyVisible })
+
+    handleSubmit = () => {
+        console.log(this.state);
+    }
 
     render() {
 
-        const { animation, duration, availabilityVisible, companyVisible } = this.state
+        const { 
+            animation, 
+            duration, 
+            availabilityVisible, 
+            companyVisible, 
+            name,
+            classification,
+            addressLine1,
+            addressLine2,
+            price,
+            available_24_7,
+            auto_book,
+            notes,
+            restrictions,
+            quantity,
+            photo_url,
+            company 
+        } = this.state;
 
         const spotOptions = [
           { key: 'pd', text: 'Paved Driveway', value: 'paved driveway' },
@@ -49,7 +85,7 @@ class ListForm extends Component {
         <div style={columnStyle} className="ui text container">
         
         <h2 style={columnHeadingStyle} className="ui header">Hi, Alexander! Let's get you set up to start renting out your extra parking spaces.</h2>
-        <Form size={'large'}>
+        <Form size={'large'} onSubmit={this.handleSubmit}>
 
         <Form.Field>
             <Popup
@@ -58,7 +94,7 @@ class ListForm extends Component {
                 position='right center'
                 size='tiny'
             />
-            <Input fluid  placeholder="Scott's Driveway"/>
+            <Input fluid  placeholder="Scott's Driveway" name='name' value={name} onChange={this.handleChange}/>
         </Form.Field>
 
         <Form.Field>
@@ -68,12 +104,12 @@ class ListForm extends Component {
                 position='right center'
                 size='tiny'
             />
-            <Input fluid placeholder="422 E. Central Ave"/>
+            <Input fluid placeholder="422 E. Central Ave" name='addressLine1' value={addressLine1} onChange={this.handleChange}/>
         </Form.Field>
 
-        <Form.Input fluid placeholder="Apt #405 (optional)" />
+        <Form.Input fluid placeholder="Apt #405 (optional)" name='addressLine2' value={addressLine2} onChange={this.handleChange} />
 
-        <Form.Select label="What type of spot are you listing?" options={spotOptions} placeholder='--' />
+        <Form.Select label="What type of spot are you listing?" options={spotOptions} placeholder='--' name='classification' value={classification} onChange={this.handleChange} />
 
         <Form.Field>
             <Popup
@@ -82,7 +118,7 @@ class ListForm extends Component {
                 position='right center'
                 size='tiny'
             />
-            <Input fluid />
+            <Input fluid name='quantity' value={quantity} onChange={this.handleChange} />
         </Form.Field>
 
         <Popup
@@ -95,7 +131,7 @@ class ListForm extends Component {
         <Radio toggle onChange={this.handleAvailability} />
         <p />
          <Transition.Group animation={animation} duration={duration}>
-            {availabilityVisible && <Form.TextArea fluid label='When is your spot available?' placeholder="ex. MWF only; 9-5 PM only"/>}
+            {availabilityVisible && <Form.TextArea fluid label='When is your spot available?' placeholder="ex. MWF only; 9-5 PM only" name='restrictions' value={restrictions} onChange={this.handleChange}/>}
         </Transition.Group>
         <p />
 
@@ -106,7 +142,7 @@ class ListForm extends Component {
                 position='right center'
                 size='tiny'
             />
-            <Form.TextArea fluid placeholder="(optional) ex. mid-size and smaller cars only" />
+            <Form.TextArea fluid placeholder="(optional) ex. mid-size and smaller cars only" name='notes' value={notes} onChange={this.handleChange}/>
         </Form.Field>
 
         <h4 className="ui header">Price per month</h4>

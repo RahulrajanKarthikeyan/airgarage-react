@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i');
+
+/* Change the color for Radio Toggle component */
+.ui.toggle.checkbox input:checked ~ .box:before,
+.ui.toggle.checkbox input:checked ~ label:before {
+  background-color: #fa824c !important;
+}
+
+
+.ui.toggle.checkbox input:focus:checked ~ .box:before,
+.ui.toggle.checkbox input:focus:checked ~ label:before {
+  background-color: #fa824c !important;
+}
+
+* {
+    font-family: 'Ubuntu', 'Helvetica Neue', Arial, Helvetica, sans-serif !important;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+    background-color: #fa824c;
+}

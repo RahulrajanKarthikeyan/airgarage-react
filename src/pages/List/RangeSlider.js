@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-rangeslider';
 import './rangeslider.css';
+import './Override.css';
 
 class RangeSlider extends Component {
   constructor (props, context) {
