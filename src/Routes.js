@@ -12,7 +12,7 @@ import {
             <Route exact path="/" component={Home} />
             <Route path="/list" component={List} />
             <Route path="/about" component={About} />
-            <Route path="/signup" component={Signup} />
+            /*<Route path="/signup" component={Signup} />*/
             </Switch>
           </BrowserRouter>
           )

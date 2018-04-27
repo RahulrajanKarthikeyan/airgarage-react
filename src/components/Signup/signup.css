@@ -1,0 +1,16 @@
+Form {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: #fa824c !important;
+    overflow: auto;
+}
+
+label {
+    font-family: "Ubuntu" !important;
+    font-size: 10px !important;
+    color: #3c91e6 !important;
+}
