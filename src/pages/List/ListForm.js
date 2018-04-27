@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Responsive, Button, Menu, Input, Dropdown, Radio, Form, Transition, Icon, Popup } from 'semantic-ui-react'
+import axios from 'axios';
 import './Override.css';
 import RangeSlider from './RangeSlider';
 
@@ -33,6 +34,41 @@ class ListForm extends Component {
 
     handleSubmit = () => {
         console.log(this.state);
+        //event.preventDefault();
+
+        const addressText = this.state.addressLine1 + " " + this.state.addressLine2
+
+        const spot = {
+            name: this.state.name,
+            classification: this.state.classification,
+            address_text: addressText,
+            price: this.state.price,
+            available_24_7: this.state.available_24_7,
+            auto_book: this.state.auto_book,
+            notes: this.state.notes,
+            restrictions: this.state.restrictions,
+            quantity: this.state.quantity,
+            photo_url: this.state.photo_url,
+            company: this.state.company
+        };
+
+        axios.post('http://staging.airgara.ge/api/spots/', spot)
+          .then(res => {
+            alert("Spot posted!");
+          })
+
+          .catch(error => {
+            var errorResponse = "Unable to Post!\n\n";
+
+            for(var key in error.response.data) {
+                errorResponse += key;
+                errorResponse += ': ';
+                errorResponse += error.response.data[key];
+                errorResponse += '\n';
+            }
+                alert(errorResponse);
+                console.log(error.response.data);
+          });
     }
 
     render() {
@@ -57,11 +93,11 @@ class ListForm extends Component {
         } = this.state;
 
         const spotOptions = [
-          { key: 'pd', text: 'Paved Driveway', value: 'paved driveway' },
-          { key: 'gd', text: 'Gravel/Dirt Driveway', value: 'gravel driveway' },
-          { key: 'ga', text: 'Garage', value: 'garage' },
-          { key: 'pl', text: 'Parking Lot', value: 'parking lot' },
-          { key: 'cl', text: 'Covered Parking Lot', value: 'covered parking lot' }
+          { key: 'pd', text: 'Paved Driveway', value: 'Paved Driveway' },
+          { key: 'gd', text: 'Gravel/Dirt Driveway', value: 'Gravel/Dirt Driveway' },
+          { key: 'ga', text: 'Garage', value: 'Garage' },
+          { key: 'pl', text: 'Parking Lot', value: 'Parking Lot' },
+          { key: 'cl', text: 'Covered Parking Lot', value: 'Covered Parking Lot' }
         ]
 
         const columnStyle = {
@@ -146,7 +182,7 @@ class ListForm extends Component {
         </Form.Field>
 
         <h4 className="ui header">Price per month</h4>
-        <RangeSlider />
+        <RangeSlider name='price' value={price} onChange={this.handleChange}/>
 
         <Popup
             trigger={<h4 className="ui header">Are you listing this spot on behalf of an organization?</h4>}
