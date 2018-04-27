@@ -1,0 +1,49 @@
+.Footer{
+	
+	height: 400.4px;
+	weidth:	640.8px;
+	background-color:#fa934c;
+
+	
+}
+
+borderTop{
+	
+	width:20;
+	Height:20;
+	
+}
+
+ref{
+
+color: #FFFFFF;
+padding-top:8px;
+padding-bottom: 5px;
+padding: 1px;
+font-size:22px;
+text-align:center;
+margin: 2px;
+textAlign: center;
+font-family: Ubuntu;
+}
+
+img{
+	padding-top: 2px;
+	max-width: 2%;
+	display: block;
+	margin-left: auto;
+    margin-right: auto;	
+}
+
+ref1{
+	
+color: #FFFFFF;
+padding-top:8px;
+padding-bottom: 5px;
+padding: 1px;
+font-size:16px;
+text-align:center;
+margin: 2px;
+textAlign: center;
+font-family: Ubuntu;
+}
