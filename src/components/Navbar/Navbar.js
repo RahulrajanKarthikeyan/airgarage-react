@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import SignUpForm from '../../components/Signup/signup.js'
 
 class Navbar extends Component {
-
   render() {
 
     return (
@@ -26,7 +25,7 @@ class Navbar extends Component {
         <Responsive as={Menu.Menu} position="right" minWidth={Responsive.onlyTablet.minWidth}>
           <Menu.Item className="Tab" name='List a spot' as={Link} to='/list' />
           <Menu.Item className="Tab" name='Find a spot' as={Link} to='/spots' />
-          <Portal trigger={<Menu.Item className="Tab" name='Sign up' />} >
+          <Portal trigger={<Menu.Item className="Tab" name='Sign up' />} onClick={this.toggleVisibility}>
           <Segment style={{ width: '40%', height: '95%', position: 'fixed', zIndex: 1, left: '35%', top: '3%' }}>
               <SignUpForm/>
           </Segment>
@@ -39,11 +38,13 @@ class Navbar extends Component {
           <Dropdown.Menu style={{ left: 'auto', right: 0 }}>
             <Dropdown.Item as={Link} to='/list'>List a spot</Dropdown.Item>
             <Dropdown.Item as={Link} to='/spots'>Find a spot</Dropdown.Item>
+
             <Portal trigger= {<Dropdown.Item >Sign up</Dropdown.Item>} >
             <Segment style={{ width: '40%', height: '95%', position: 'fixed', zIndex: 1, left: '35%', top: '3%' }}>
                 <SignUpForm/>
             </Segment>
             </Portal>
+
             <Dropdown.Item as={Link} to='/login' >Log in</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
