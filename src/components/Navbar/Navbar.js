@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import './Navbar.css';
-import { Responsive, Button, Menu, Input, Dropdown } from 'semantic-ui-react'
+import { Responsive, Button, Menu, Input, Dropdown, Portal, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import LoginForm from '../../components/Login/login.js'
 
 class Navbar extends Component {
 
@@ -25,7 +26,14 @@ class Navbar extends Component {
           <Menu.Item className="Tab" name='List a spot' as={Link} to='/list' />
           <Menu.Item className="Tab" name='Find a spot' as={Link} to='/spots' />
           <Menu.Item className="Tab" name='Sign up' as={Link} to='/signup' />
-          <Menu.Item className="Tab" name='Log in' as={Link} to='/login' />
+         
+
+         <Portal trigger={<Menu.Item className="Tab" name='Log in' />}>
+            <Segment style={{ width: '40%', height: '95%', position: 'fixed', zIndex: 1, left: '35%', top: '3%'}}>
+              <LoginForm/>
+            </Segment>
+         </Portal>
+
         </Responsive>
 
         <Responsive as={Menu.Item} maxWidth={Responsive.onlyTablet.minWidth}>
@@ -34,7 +42,14 @@ class Navbar extends Component {
             <Dropdown.Item as={Link} to='/list'>List a spot</Dropdown.Item>
             <Dropdown.Item as={Link} to='/spots'>Find a spot</Dropdown.Item>
             <Dropdown.Item as={Link} to='/signup' >Sign up</Dropdown.Item>
-            <Dropdown.Item as={Link} to='/login' >Log in</Dropdown.Item>
+           
+
+            <Portal trigger= {<Dropdown.Item >Login</Dropdown.Item>}>
+                <Segment style={{ width: '40%', height: '95%', position: 'fixed', zIndex: 1, left: '35%', top: '3%'}}>
+                  <LoginForm/>
+                </Segment>
+            </Portal>
+            
           </Dropdown.Menu>
         </Dropdown>
         </Responsive>
